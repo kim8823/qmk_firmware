@@ -1,0 +1,9 @@
+#pragma once
+
+#define MATRIX_ROW_PINS { GP29, GP28 }
+#define MATRIX_COL_PINS { GP1, GP2, GP3, GP4 }
+
+#define MOUSEKEY_INERTIA
+#define MOUSEKEY_MAX_SPEED 48
+#define MOUSEKEY_TIME_TO_MAX 24
+#define MOUSEKEY_FRICTION 12
