@@ -179,7 +179,8 @@ combo_t key_combos[] = {
   [ARTSEY_9] = COMBO_ACTION(artsey_9),
   [ARTSEY_0] = COMBO_ACTION(artsey_0),
 };
-  void process_combo_event(uint16_t combo_index,  bool pressed) {
+
+void process_combo_event(uint16_t combo_index,  bool pressed) {
   switch(combo_index) {
     case ARTSEY_H:
       if (pressed) { SEND_STRING("h"); }
