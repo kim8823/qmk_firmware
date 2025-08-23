@@ -294,7 +294,7 @@ combo_t key_combos[] = {
       break;
 
     case ARTSEY_QUOTE:
-      if (pressed) { SEND_STRING("'"); }
+      if (pressed) { SEND_STRING("\""); }
       break;
 
     case ARTSEY_BANG:
@@ -302,7 +302,7 @@ combo_t key_combos[] = {
       break;
 
     case ARTSEY_QUEST:
-      if (pressed) { SEND_STRING("?"); }
+      if (pressed) { SEND_STRING(SS_TAP(X_MINS)); /* ß */ }
       break;
 
     case ARTSEY_PERIOD:

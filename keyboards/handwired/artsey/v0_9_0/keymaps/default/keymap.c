@@ -36,8 +36,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_ART_CUS] = LAYOUT(
-    KC_MPLY, KC_MUTE, KC_KB_VOLUME_UP,   _______,
-    KC_MPRV, KC_MNXT, KC_KB_VOLUME_DOWN, _______
+    KC_MPLY, DE_ADIA, DE_ODIA, _______,
+    KC_MPRV, KC_MNXT, DE_UDIA, _______
   ),
 
   [_ART_SYM] = LAYOUT(
