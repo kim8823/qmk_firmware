@@ -26,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ART_NUM] = LAYOUT(
     KC_1, KC_2, KC_3, _______,
-    KC_4, KC_5, KC_6, _______
+    KC_4, KC_5, KC_6, DE_EURO
   ),
 
 
@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_ART_CUS] = LAYOUT(
-    KC_MPLY, DE_ADIA, DE_ODIA, _______,
+    KC_MPLY, DE_ADIA, DE_ODIA, DE_MICR,
     KC_MPRV, KC_MNXT, DE_UDIA, _______
   ),
 
