@@ -85,6 +85,8 @@ enum combo_events {
   ARTSEY_CIRC,
   ARTSEY_PLUS,
   ARTSEY_TILD,
+  ARTSEY_BTN3,
+  ARTSEY_INS,
   COMBO_LENGTH
 };
 
@@ -150,6 +152,8 @@ const uint16_t PROGMEM artsey_0[] = {NUM_2_2, NUM_2_3, COMBO_END};
 const uint16_t PROGMEM artsey_circ[] = {DE_AT, DE_GRV, COMBO_END};
 const uint16_t PROGMEM artsey_plus[] = {TD(TD_DE_SCLN_COLN), DE_MINS, COMBO_END};
 const uint16_t PROGMEM artsey_tild[] = {DE_BSLS, DE_EQL, COMBO_END};
+const uint16_t PROGMEM artsey_btn3[] = {KC_BTN1, KC_BTN2, COMBO_END};
+const uint16_t PROGMEM artsey_ins[] = {BASE_1_4, BASE_1_3, BASE_2_4, COMBO_END};
 combo_t key_combos[] = {
   [ARTSEY_H] = COMBO_ACTION(artsey_h),
   [ARTSEY_Q] = COMBO_ACTION(artsey_q),
@@ -212,6 +216,8 @@ combo_t key_combos[] = {
   [ARTSEY_CIRC] = COMBO_ACTION(artsey_circ),
   [ARTSEY_PLUS] = COMBO_ACTION(artsey_plus),
   [ARTSEY_TILD] = COMBO_ACTION(artsey_tild),
+  [ARTSEY_BTN3] = COMBO_ACTION(artsey_btn3),
+  [ARTSEY_INS] = COMBO_ACTION(artsey_ins),
 };
 
 void process_combo_event(uint16_t combo_index,  bool pressed) {
@@ -534,5 +540,12 @@ void process_combo_event(uint16_t combo_index,  bool pressed) {
       if (pressed) { SEND_STRING("~"); }
       break;
 
+    case ARTSEY_BTN3:
+      if (pressed) { SEND_STRING(SS_TAP(X_BTN3)); }
+      break;
+
+    case ARTSEY_INS:
+      if (pressed) { SEND_STRING(SS_TAP(X_INS)); }
+      break;
   }
 }
