@@ -1,3 +1,28 @@
+enum tap_dance_events {
+  TD_DE_PRN,
+  TD_DE_BRC,
+  TD_DE_CBR,
+  TD_DE_ABK,
+  TD_DE_DLR_PERC,
+  TD_DE_ADIA,
+  TD_DE_ODIA,
+  TD_DE_HASH_QUOT,
+  TD_DE_SCLN_COLN,
+  TD_LENGTH
+};
+
+tap_dance_action_t tap_dance_actions[] = {
+  [TD_DE_PRN] = ACTION_TAP_DANCE_DOUBLE(DE_LPRN, DE_RPRN),
+  [TD_DE_BRC] = ACTION_TAP_DANCE_DOUBLE(DE_LBRC, DE_RBRC),
+  [TD_DE_CBR] = ACTION_TAP_DANCE_DOUBLE(DE_LCBR, DE_RCBR),
+  [TD_DE_ABK] = ACTION_TAP_DANCE_DOUBLE(DE_LABK, DE_RABK),
+  [TD_DE_DLR_PERC] = ACTION_TAP_DANCE_DOUBLE(DE_DLR, DE_PERC),
+  [TD_DE_ADIA] = ACTION_TAP_DANCE_DOUBLE(DE_ADIA, ALGR(DE_A)),
+  [TD_DE_ODIA] = ACTION_TAP_DANCE_DOUBLE(DE_ODIA, ALGR(DE_O)),
+  [TD_DE_HASH_QUOT] = ACTION_TAP_DANCE_DOUBLE(DE_HASH, DE_QUOT),
+  [TD_DE_SCLN_COLN] = ACTION_TAP_DANCE_DOUBLE(DE_SCLN, DE_COLN),
+};
+
 enum combo_events {
   ARTSEY_H,
   ARTSEY_Q,
@@ -57,6 +82,9 @@ enum combo_events {
   ARTSEY_8,
   ARTSEY_9,
   ARTSEY_0,
+  ARTSEY_CIRC,
+  ARTSEY_PLUS,
+  ARTSEY_TILD,
   COMBO_LENGTH
 };
 
@@ -119,6 +147,9 @@ const uint16_t PROGMEM artsey_7[] = {NUM_1_1, NUM_1_2, COMBO_END};
 const uint16_t PROGMEM artsey_8[] = {NUM_1_2, NUM_1_3, COMBO_END};
 const uint16_t PROGMEM artsey_9[] = {NUM_2_1, NUM_2_2, COMBO_END};
 const uint16_t PROGMEM artsey_0[] = {NUM_2_2, NUM_2_3, COMBO_END};
+const uint16_t PROGMEM artsey_circ[] = {DE_AT, DE_GRV, COMBO_END};
+const uint16_t PROGMEM artsey_plus[] = {TD(TD_DE_SCLN_COLN), DE_MINS, COMBO_END};
+const uint16_t PROGMEM artsey_tild[] = {DE_BSLS, DE_EQL, COMBO_END};
 combo_t key_combos[] = {
   [ARTSEY_H] = COMBO_ACTION(artsey_h),
   [ARTSEY_Q] = COMBO_ACTION(artsey_q),
@@ -178,6 +209,9 @@ combo_t key_combos[] = {
   [ARTSEY_8] = COMBO_ACTION(artsey_8),
   [ARTSEY_9] = COMBO_ACTION(artsey_9),
   [ARTSEY_0] = COMBO_ACTION(artsey_0),
+  [ARTSEY_CIRC] = COMBO_ACTION(artsey_circ),
+  [ARTSEY_PLUS] = COMBO_ACTION(artsey_plus),
+  [ARTSEY_TILD] = COMBO_ACTION(artsey_tild),
 };
 
 void process_combo_event(uint16_t combo_index,  bool pressed) {
@@ -487,5 +521,18 @@ void process_combo_event(uint16_t combo_index,  bool pressed) {
     case ARTSEY_0:
       if (pressed) { SEND_STRING("0"); }
       break;
+
+    case ARTSEY_CIRC:
+      if (pressed) { SEND_STRING(SS_TAP(X_GRV)); }
+      break;
+
+    case ARTSEY_PLUS:
+      if (pressed) { SEND_STRING("+"); }
+      break;
+
+    case ARTSEY_TILD:
+      if (pressed) { SEND_STRING("~"); }
+      break;
+
   }
 }

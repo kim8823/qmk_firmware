@@ -31,18 +31,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
   [_ART_PUNC] = LAYOUT(
-    DE_HASH, DE_GRV, DE_SCLN, DE_BSLS,
-    _______, DE_AT,  DE_MINS, DE_EQL
+    TD(TD_DE_HASH_QUOT), DE_GRV, TD(TD_DE_SCLN_COLN), DE_BSLS,
+    _______,             DE_AT,  DE_MINS,             DE_EQL
   ),
 
   [_ART_CUS] = LAYOUT(
-    KC_MPLY, DE_ADIA, DE_ODIA, DE_MICR,
-    KC_MPRV, KC_MNXT, DE_UDIA, _______
+    KC_MPLY, TD(TD_DE_ADIA), TD(TD_DE_ODIA), DE_MICR,
+    KC_MPRV, KC_MNXT,        DE_UDIA,        _______
   ),
 
   [_ART_SYM] = LAYOUT(
-    _______, DE_LPRN, DE_LBRC, DE_LCBR,
-    _______, DE_RPRN, DE_RBRC, DE_RCBR
+    _______,            TD(TD_DE_PRN), TD(TD_DE_BRC), TD(TD_DE_CBR),
+    TD(TD_DE_DLR_PERC), TD(TD_DE_ABK), DE_AMPR,       DE_PIPE
   ),
 
   [_ART_MOU] = LAYOUT(
