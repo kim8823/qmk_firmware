@@ -7,3 +7,6 @@
 #define MOUSEKEY_MAX_SPEED 48
 #define MOUSEKEY_TIME_TO_MAX 24
 #define MOUSEKEY_FRICTION 12
+
+// comment out for right layout
+// #define LEFT_LAYOUT

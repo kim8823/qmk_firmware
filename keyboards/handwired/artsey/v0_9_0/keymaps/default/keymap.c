@@ -15,7 +15,11 @@ enum layers {
 #include "aliases.c"
 #include "combos.c"
 
-#define _______ KC_TRNS
+#ifdef LEFT_LAYOUT
+  #define RL(right, left) (left)
+#else
+  #define RL(right, left) (right)
+#endif
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -47,11 +51,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ART_MOU] = LAYOUT(
     KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_U,
-    KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D
+    RL(KC_MS_L, KC_MS_R), KC_MS_D, RL(KC_MS_R, KC_MS_L), KC_WH_D
   ),
 
   [_ART_NAV] = LAYOUT(
     KC_HOME, KC_UP,   KC_END,   KC_PGUP,
-    KC_LEFT, KC_DOWN, KC_RIGHT, KC_PGDN
+    RL(KC_LEFT, KC_RIGHT), KC_DOWN, RL(KC_RIGHT, KC_LEFT), KC_PGDN
   ),
 };
