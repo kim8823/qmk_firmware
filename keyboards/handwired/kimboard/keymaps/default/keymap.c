@@ -18,8 +18,8 @@ enum layer_names {
   BAS,
   CMK,
   NAV,
-  NUM,
   SYM,
+  NUM,
   GAM,
   _ART_NUM,
   _ART_CUS,
@@ -115,27 +115,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /*
     * ┌───┐   ┌───┬───┬───┬───┐         ┌───┬───┬───┬───┐   ┌───┐
-    * │   │   │ C │ D │ E │ F │         │   │Nu7│Nu8│Nu9│   │   │
-    * ├───┼───┼───┼───┼───┼───┤         ├───┼───┼───┼───┼───┼───┤
-    * │ A │ B │ 2 │ 3 │ 4 │ 5 │         │   │Nu4│Nu5│Nu6│ ß │Nu-│
-    * ├───┼───┼───┼───┼───┼───┤         ├───┼───┼───┼───┼───┼───┤
-    * │   │ 1 │ 7 │ 8 │ 9 │ 0 │         │   │Nu1│Nu2│Nu3│ 0 │Nu+│
-    * ├───┼───┼───┼───┼───┼───┤         ├───┼───┼───┼───┼───┼───┤
-    * │   │ 6 │ X │ # │   │   │         │   │   │Nu0│Nu,│ . │Ent│
-    * └───┴───┼───┼───┼───┼───┤         ├───┼───┼───┼───┼───┴───┘
-    *         │   │   │   │   │         │LAY│   │   │   │
-    *         └───┴───┴───┴───┘         └───┴───┴───┴───┘
-    */
-  [NUM] = LAYOUT(
-      _______,          DE_C,    DE_D,    DE_E,    DE_F,              _______, KC_P7,   KC_P7,   KC_P3,            _______,
-      DE_A,    DE_B,    KC_2,    KC_3,    KC_4,    KC_5,              _______, KC_P4,   KC_P5,   KC_P3,   DE_SS,   KC_PMNS,
-      _______, KC_1,    KC_7,    KC_8,    KC_9,    KC_0,              _______, KC_P1,   KC_P2,   KC_P3,   KC_0,    KC_PPLS,
-      _______, KC_6,    DE_X,    DE_HASH, _______, _______,           _______, _______, KC_P0,   KC_PDOT, DE_DOT,  KC_PENT,
-                        _______, _______, _______, _______,           LAYER,   _______, _______, _______
-  ),
-
-  /*
-    * ┌───┐   ┌───┬───┬───┬───┐         ┌───┬───┬───┬───┐   ┌───┐
     * │   │   │   │   │   │   │         │   │   │   │   │   │   │
     * ├───┼───┼───┼───┼───┼───┤         ├───┼───┼───┼───┼───┼───┤
     * │   │   │ " │ § │ $ │ % │         │ & │ / │ ( │ ) │ ? │ ´ │
@@ -153,6 +132,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, DE_EXLM, _______, _______, _______, _______,           _______, _______, _______, _______, DE_EQL,  BAKTIK,
       _______, _______, _______, _______, _______, _______,           _______, _______, _______, _______, _______, _______,
                         TG_GAM,  TG_GAM,  _______, LAYER,             _______, _______, _______, _______
+  ),
+
+  /*
+    * ┌───┐   ┌───┬───┬───┬───┐         ┌───┬───┬───┬───┐   ┌───┐
+    * │   │   │ C │ D │ E │ F │         │   │Nu7│Nu8│Nu9│   │   │
+    * ├───┼───┼───┼───┼───┼───┤         ├───┼───┼───┼───┼───┼───┤
+    * │ A │ B │ 2 │ 3 │ 4 │ 5 │         │   │Nu4│Nu5│Nu6│ ß │Nu-│
+    * ├───┼───┼───┼───┼───┼───┤         ├───┼───┼───┼───┼───┼───┤
+    * │   │ 1 │ 7 │ 8 │ 9 │ 0 │         │   │Nu1│Nu2│Nu3│ 0 │Nu+│
+    * ├───┼───┼───┼───┼───┼───┤         ├───┼───┼───┼───┼───┼───┤
+    * │   │ 6 │ X │ # │   │   │         │   │   │Nu0│Nu,│ . │Ent│
+    * └───┴───┼───┼───┼───┼───┤         ├───┼───┼───┼───┼───┴───┘
+    *         │   │   │   │   │         │LAY│   │   │   │
+    *         └───┴───┴───┴───┘         └───┴───┴───┴───┘
+    */
+  [NUM] = LAYOUT(
+      _______,          DE_C,    DE_D,    DE_E,    DE_F,              _______, KC_P7,   KC_P7,   KC_P3,            _______,
+      DE_A,    DE_B,    KC_2,    KC_3,    KC_4,    KC_5,              _______, KC_P4,   KC_P5,   KC_P3,   DE_SS,   KC_PMNS,
+      _______, KC_1,    KC_7,    KC_8,    KC_9,    KC_0,              _______, KC_P1,   KC_P2,   KC_P3,   KC_0,    KC_PPLS,
+      _______, KC_6,    DE_X,    DE_HASH, _______, _______,           _______, _______, KC_P0,   KC_PDOT, DE_DOT,  KC_PENT,
+                        _______, _______, _______, _______,           LAYER,   _______, _______, _______
   ),
 
   /*
@@ -781,4 +781,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     default:
       return true;
   }
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  bool is_num_via_tri_layer = IS_LAYER_ON_STATE(state, NAV) && IS_LAYER_ON_STATE(state, SYM);
+  static bool tri_win_down = false;
+
+  if (is_num_via_tri_layer) {
+    if (!tri_win_down) {
+      register_code(KC_LWIN);
+      tri_win_down = true;
+    }
+  }
+  else {
+    if (tri_win_down) {
+      unregister_code(KC_LWIN);
+      tri_win_down = false;
+    }
+  }
+
+  return update_tri_layer_state(state, NAV, SYM, NUM);
 }
