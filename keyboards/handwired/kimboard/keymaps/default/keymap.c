@@ -21,6 +21,7 @@ enum layer_names {
   SYM,
   NUM,
   GAM,
+  SYM2,
   _ART_NUM,
   _ART_CUS,
   _ART_PUNC,
@@ -126,13 +127,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *         │Gam│Gam│   │LAY│         │   │   │   │   │
     *         └───┴───┴───┴───┘         └───┴───┴───┴───┘
     */
-  [SYM] = LAYOUT(
-      _______,          _______, _______, _______, _______,           _______, _______, _______, _______,          _______,
-      _______, _______, DE_DQUO, DE_SECT, DE_DLR,  DE_PERC,           DE_AMPR, DE_SLSH, DE_LPRN, DE_RPRN, DE_QUES, DE_ACUT,
-      _______, DE_EXLM, _______, _______, _______, _______,           _______, _______, _______, _______, DE_EQL,  BAKTIK,
-      _______, _______, _______, _______, _______, _______,           _______, _______, _______, _______, _______, _______,
-                        TG_GAM,  TG_GAM,  _______, LAYER,             _______, _______, _______, _______
-  ),
+  #define SYM_LAYOUT LAYOUT(                                                                                                \
+      _______,          _______, _______, _______, _______,           _______, _______, _______, _______,          _______, \
+      _______, _______, DE_DQUO, DE_SECT, DE_DLR,  DE_PERC,           DE_AMPR, DE_SLSH, DE_LPRN, DE_RPRN, DE_QUES, DE_ACUT, \
+      _______, DE_EXLM, _______, _______, _______, _______,           _______, _______, _______, _______, DE_EQL,  BAKTIK,  \
+      _______, _______, _______, _______, _______, _______,           _______, _______, _______, _______, _______, _______, \
+                        TG_GAM,  TG_GAM,  _______, LAYER,             _______, _______, _______, _______                    \
+  )
+  [SYM] = SYM_LAYOUT,
+  [SYM2] = SYM_LAYOUT,
 
   /*
     * ┌───┐   ┌───┬───┬───┬───┐         ┌───┬───┬───┬───┐   ┌───┐
@@ -800,5 +803,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     }
   }
 
-  return update_tri_layer_state(state, NAV, SYM, NUM);
+  state = update_tri_layer_state(state, NAV, SYM, NUM);
+
+  state = update_tri_layer_state(state, NUM, NAV, SYM2);
+  state = update_tri_layer_state(state, NUM, SYM, SYM2);
+  state = update_tri_layer_state(state, GAM, SYM, SYM2);
+
+  return state;
 }
